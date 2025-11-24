@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Task extends Model
+{
+    protected $fillable = ['title', 'description', 'due_date', 'status', 'user_id', 'related_type', 'related_id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function related()
+    {
+        return $this->morphTo();
+    }
+}
